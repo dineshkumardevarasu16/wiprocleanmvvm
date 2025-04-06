@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+        <variable
+            name="viewmodels"
+            type="com.observer.apiimplementation.presentationLayer.viewmodel.AddProductViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0000FF"
+            app:elevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:letterSpacing="0.01"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="14sp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:maxLines="2"
+                    android:text="@string/add_data_name"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registerNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/editTextInputThemeNew"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_reg_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/title"
+                android:imeOptions="flagNoExtractUi"
+                android:inputType="textPersonName"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="@={viewmodels.productTitle}"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/fatherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/editTextInputThemeNew"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerNo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/description"
+                android:imeOptions="flagNoExtractUi"
+                android:inputType="textPersonName"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="@={viewmodels.description}"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/motherName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="50dp"
+            android:background="@drawable/bg_corners_full_round"
+            android:textSize="12sp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fatherName"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/editTextInputThemeNew"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/motherName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/price"
+                android:imeOptions="flagNoExtractUi"
+                android:inputType="numberDecimal"
+                android:maxLength="25"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:text="@={viewmodels.priceProduct}"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dob"
+            android:visibility="@{viewmodels.loading ? View.VISIBLE : View.GONE}"
+            android:indeterminate="true"
+            android:layout_marginTop="15dp"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="@color/blue"
+            />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:background='@{viewmodels.mediatorData ? @color/blue : @color/black}'
+            android:backgroundTint="@{viewmodels.mediatorData ? @color/blue : @color/black}"
+            android:enabled="@{viewmodels.mediatorData}"
+            android:onClick="@{() -> viewmodels.submitDataValue()}"
+            android:text="@string/submit"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

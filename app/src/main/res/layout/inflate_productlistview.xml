@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="productdata"
+            type="java.lang.String" />
+
+        <variable
+            name="mViewModel"
+            type="com.observer.apiimplementation.presentationLayer.adapter.ProductDataAdapter.ProductViewHolder" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{(compoundButton, checked) -> mViewModel.onCheckedChangeCheckboxA(compoundButton, checked)}"
+            android:text="@{productdata}"
+            android:buttonTint="@color/blue"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="12sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
